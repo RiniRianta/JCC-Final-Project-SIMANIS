@@ -9,4 +9,8 @@ class adminController extends Controller
     public function home() {
         return view('admin.homepage');
     }
+
+    public function masterjurusan() {
+        return view('admin.master.mjurusan');
+    }
 }

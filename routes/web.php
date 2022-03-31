@@ -13,3 +13,4 @@
 
 Route::get("/", "HomeController@index");
 Route::get("/admin", "adminController@home");
+Route::get("/admin/mjurusan", "adminController@masterjurusan");
