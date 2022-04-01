@@ -10,4 +10,9 @@ class HomeController extends Controller
     {
         return view('index');
     }
+
+    public function guru()
+    {
+        return view('guru.index');
+    }
 }
