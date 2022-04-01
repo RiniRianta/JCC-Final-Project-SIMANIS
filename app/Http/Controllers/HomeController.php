@@ -10,4 +10,8 @@ class HomeController extends Controller
     {
         return view('index');
     }
+    public function dashboard()
+    {
+        return view('operator.partial.homepage');
+    }
 }

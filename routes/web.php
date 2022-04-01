@@ -12,6 +12,6 @@
 */
 
 Route::get("homepage", function(){
-    return view('operator.homepage');
+    return view('operator.partial.homepage');
 });
 Route::get("/", "HomeController@dashboard");
