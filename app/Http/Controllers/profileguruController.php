@@ -15,6 +15,7 @@ class profileguruController extends Controller
     public function index()
     {
         $profile = guru::all();
+
         return view("guru.dataguru.profile");
     }
 

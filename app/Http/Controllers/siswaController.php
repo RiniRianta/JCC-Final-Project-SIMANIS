@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\siswa;
+
 
 class siswaController extends Controller
 {
@@ -13,7 +15,12 @@ class siswaController extends Controller
      */
     public function index()
     {
-        return view('datasiswa.siswa');
+        $siswa = siswa::all();
+
+        return view('datasiswa.siswa', [
+            'siswa' => $siswa,
+            'key' => 1
+        ]);
     }
 
     /**
