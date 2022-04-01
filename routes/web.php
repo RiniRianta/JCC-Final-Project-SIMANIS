@@ -14,4 +14,6 @@
 Route::get("/", "HomeController@index");
 Route::get("/guru", "HomeController@guru");
 Route::get("/admin", "adminController@home");
+Route::get("/operator", "HomepageController@dasboard");
 Route::resource("/guru/profile", "profileguruController");
+Route::resource("/guru/datasiswa", "siswaController");
