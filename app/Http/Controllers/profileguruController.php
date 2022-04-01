@@ -14,9 +14,11 @@ class profileguruController extends Controller
      */
     public function index()
     {
-        $profile = guru::all();
+        $profile = guru::where('id', 1)->first();
 
-        return view("guru.dataguru.profile");
+        return view("guru.dataguru.profile", [
+            'profile' => $profile
+        ]);
     }
 
     /**
@@ -71,7 +73,25 @@ class profileguruController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'jk' => 'required',
+            'nip' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'gol' => 'required'
+        ]);
+
+        guru::where('id', $id)->update([
+            'nama_guru' => $request->nama,
+            'jenis_kelamin' => $request->jk,
+            'NIP' => $request->nip,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'gol' => $request->gol
+        ]);
+
+        return redirect('/guru/profile');
     }
 
     /**
