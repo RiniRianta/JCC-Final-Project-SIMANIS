@@ -21,3 +21,4 @@ Route::get("/guru", "HomeController@guru");
 Route::get("/operator", "HomepageController@dasboard");
 Route::resource("/guru/profile", "profileguruController");
 Route::resource("/guru/datasiswa", "siswaController");
+Route::resource("/guru/absensi", "absensiController");

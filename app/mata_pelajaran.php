@@ -18,4 +18,9 @@ class mata_pelajaran extends Model
     {
         return $this->hasMany('App\nilai_siswa');
     }
+
+    public function kelas()
+    {
+        return $this->belongsTo('App\kelas');
+    }
 }

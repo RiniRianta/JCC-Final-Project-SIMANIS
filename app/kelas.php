@@ -18,4 +18,9 @@ class kelas extends Model
     {
         return $this->belongsTo('App\jurusan');
     }
+
+    public function mata_pelajaran()
+    {
+        return $this->hasMany('App\mata_pelajaran');
+    }
 }
