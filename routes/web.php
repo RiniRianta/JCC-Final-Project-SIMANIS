@@ -11,4 +11,7 @@
 |
 */
 
-Route::get("/", "HomeController@index");
+Route::get("homepage", function(){
+    return view('operator.homepage');
+});
+Route::get("/", "HomeController@dashboard");
