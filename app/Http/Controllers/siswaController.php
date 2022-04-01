@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\siswa;
+use App\kelas;
 
 
 class siswaController extends Controller
@@ -30,7 +31,10 @@ class siswaController extends Controller
      */
     public function create()
     {
-        //
+        $kelas = kelas::all();
+        return view('datasiswa.create', [
+            'kelas' => $kelas
+        ]);
     }
 
     /**
@@ -41,7 +45,27 @@ class siswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validasi = $request->validate([
+            'nama' => 'required',
+            'jenis_kelamin' => 'required',
+            'nisn' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'kelas' => 'required'
+        ]);
+        $siswa = new siswa;
+        $siswa->nama = $request->nama;
+        $siswa->jenis_kelamin = $request->jenis_kelamin;
+        $siswa->nisn = $request->nisn;
+        $siswa->tempat_lahir = $request->tempat_lahir;
+        $siswa->tanggal_lahir = $request->tanggal_lahir;
+        $siswa->kelas_id = $request->kelas;
+        $siswa->save();
+        $siswa = siswa::all();
+        return view('datasiswa.siswa', [
+            'key' => 1,
+            'siswa' => $siswa
+        ]);
     }
 
     /**
@@ -63,7 +87,12 @@ class siswaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kelas = kelas::all();
+        $siswa_id = siswa::where('id', $id)->first();;
+        return view('datasiswa.edit', [
+            'siswa' => $siswa_id,
+            'kelas' => $kelas
+        ]);
     }
 
     /**
@@ -75,7 +104,27 @@ class siswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validasi = $request->validate([
+            'nama' => 'required',
+            'jenis_kelamin' => 'required',
+            'nisn' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'kelas' => 'required'
+        ]);
+
+
+        siswa::where('id', $id)->update(
+            [
+                'nama' => $request->nama,
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'nisn' => $request->nisn,
+                'tempat_lahir' => $request->tempat_lahir,
+                'tanggal_lahir' => $request->tanggal_lahir,
+                'kelas_id' => $request->kelas,
+            ]
+        );
+        return redirect('/guru/datasiswa');
     }
 
     /**
@@ -86,6 +135,8 @@ class siswaController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        siswa::where('id', $id)->delete();
+        return redirect('/guru/datasiswa');
     }
 }
