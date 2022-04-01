@@ -11,7 +11,16 @@
 |
 */
 
-Route::get("homepage", function(){
-    return view('operator.partial.homepage');
-});
-Route::get("/", "HomeController@dashboard");
+
+Route::get("/operator", "HomeController@dashboard");
+Route::get("/", "HomeController@index");
+Route::get("/admin", "adminController@home");
+Route::get("/admin/mjurusan", "adminController@masterjurusan");
+Route::get("/admin/mkelas", "adminController@masterkelas");
+Route::get("/admin/mguru", "adminController@masterguru");
+Route::get("/admin/mmapel", "adminController@mastermapel");
+Route::get("/guru", "HomeController@guru");
+Route::resource("/guru/profile", "profileguruController");
+Route::resource("/guru/datasiswa", "siswaController");
+Route::resource("/guru/absensi", "absensiController");
+
