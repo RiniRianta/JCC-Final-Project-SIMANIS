@@ -23,3 +23,5 @@ Route::resource("/guru/profile", "profileguruController");
 Route::resource("/guru/datasiswa", "siswaController");
 Route::resource("/guru/absensi", "absensiController");
 Route::resource("/operator/relasi", "relasikelasController");
+Route::get('/guru/absensi/findMapel/{id}', "absensiController@findMapel");
+Route::get('/guru/absensi/findSiswa/{id}', "absensiController@findSiswa");
