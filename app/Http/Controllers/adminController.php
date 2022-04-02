@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 
 class adminController extends Controller
 {
-    public function home() {
-        return view('admin.homepage');
+    public function home(Request $request) {
+        $tsiswa = \DB::table('siswas')->get()->count();
+        return view('admin.homepage', compact('tsiswa'));
     }
 
     public function masterjurusan() {
