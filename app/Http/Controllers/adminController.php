@@ -15,14 +15,14 @@ class adminController extends Controller
     }
 
     public function masterjurusan() {
-        return view('admin.master.mjurusan');
+        return view('master.jurusan.mjurusan');
     }
 
     public function masterkelas() {
-        return view('admin.master.mkelas');
+        return view('master.kelas.mkelas');
     }
 
     public function mastermapel() {
-        return view('admin.master.mpelajaran');
+        return view('master.mapel.mpelajaran');
     }
 }

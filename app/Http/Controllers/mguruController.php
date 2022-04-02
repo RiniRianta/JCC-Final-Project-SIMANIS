@@ -16,7 +16,7 @@ class mguruController extends Controller
     {
         $guru = guru::all();
 
-        return view('admin.master.mguru', [
+        return view('master.guru.mguru', [
             'guru' => $guru,
             'num' => 1
         ]);
@@ -40,7 +40,7 @@ class mguruController extends Controller
      */
     public function store(Request $request)
     {
-
+        // guru::create($request->all());
         $gurum = new guru;
         $gurum->nama_guru = $request->nama_guru;
         $gurum->nip = $request->nip;
@@ -50,10 +50,7 @@ class mguruController extends Controller
         $gurum->gol = $request->gol;
         $gurum->save();
         $gurum = guru::all();
-        return view('admin.master.mguru', [
-            'guru' => $gurum,
-            'num' => 1
-        ]);
+        return redirect('/admin/mguru')->with('success', 'Show is successfully saved');
     }
 
     /**
