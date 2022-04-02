@@ -29,7 +29,7 @@ class mguruController extends Controller
      */
     public function create()
     {
-        //
+        // return view('admin.master.mguru');
     }
 
     /**
@@ -40,7 +40,20 @@ class mguruController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $gurum = new guru;
+        $gurum->nama_guru = $request->nama_guru;
+        $gurum->nip = $request->nip;
+        $gurum->jenis_kelamin = $request->jenis_kelamin;
+        $gurum->tempat_lahir = $request->tempat_lahir;
+        $gurum->tanggal_lahir = $request->tanggal_lahir;
+        $gurum->gol = $request->gol;
+        $gurum->save();
+        $gurum = guru::all();
+        return view('admin.master.mguru', [
+            'guru' => $gurum,
+            'num' => 1
+        ]);
     }
 
     /**

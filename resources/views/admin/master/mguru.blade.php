@@ -60,41 +60,48 @@
             </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="/admin/mguru" method="post">
+                    @csrf
                     <div class="form-group">
                     <label>Nama</label>
-                    <input type="text" class="form-control" placeholder="Masukan Nama">
+                    <input type="text" class="form-control" name="nama_guru" id="nama" placeholder="Masukan Nama" required>
                     </div>
                     <div class="form-group">
                         <label>No Induk Pegawai</label>
-                        <input type="text" class="form-control" placeholder="Masukan no NIP">
+                        <input type="text" class="form-control" name="nip" id="nip" placeholder="Masukan no NIP" required>
                     </div>
                     <div class="form-group">
-                    <label>Jenis Kelamin</label>
-                    <select class="form-control">
-                        <option>...</option>
-                        <option>Laki-Laki</option>
-                        <option>Perempuan</option>
-                    </select>
+                     <label>Jenis Kelamin</label>
+                        <select class="form-control" name="jenis_kelamin" id="jenis_kelamin">
+                            <option selected>Pilih Jenis Kelamin</option>
+                            <option>Laki-Laki</option>
+                            <option>Perempuan</option>
+                        </select>
                     </div>
-                    <div class="form-group">
-                        <label>Tempat Lahir</label>
-                        <input type="text" class="form-control" placeholder="Masukan Kota Tempat Lahir">
-                    </div>
-                    <div class="form-group">
-                        <label>Tanggal Lahir</label>
-                        <input type="date" class="form-control" placeholder="Masukan Tanggal Lahir">
-                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label>Tempat Lahir</label>
+                                <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" placeholder="Masukan Tempat Lahir" required>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label>Tanggal Lahir</label>
+                                <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" placeholder="Masukan Tanggal Lahir">
+                            </div>
+                        </div>
+                    </div>    
                     <div class="form-group">
                         <label>Golongan</label>
-                        <input type="text" class="form-control" placeholder="Tipe Golongan">
+                        <input type="text" class="form-control" name="gol" id="gol" placeholder="Tipe Golongan" required>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
-            <button type="button" class="btn btn-primary">Simpan</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
         </div>
         </div>
     </div>
