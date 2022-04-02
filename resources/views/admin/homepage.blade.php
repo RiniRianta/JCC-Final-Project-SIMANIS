@@ -33,7 +33,7 @@
                 <i class="fa fa-chart-pie fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2">Jumlah Jurusan</p>
-                    <h2 class="mb-0">1234</h2>
+                    <h2 class="mb-0 text-center">{{$tjurusan}}</h2>
                 </div>
             </div>
         </div>
