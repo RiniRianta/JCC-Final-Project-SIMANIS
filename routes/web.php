@@ -26,5 +26,6 @@ Route::resource("/guru/profile", "profileguruController");
 Route::resource("/guru/datasiswa", "siswaController");
 Route::resource("/guru/absensi", "absensiController");
 Route::resource("/admin/mjurusan", "jurusanController");
-Route::resource("/operator/relasi", "relasikelasController@index");
+Route::resource("/operator/relasi", "relasikelasController");
+Route::resource("/operator/relasi/guru", "RelasiguruController");
 Route::resource("/admin/mkelas", "kelasController");
