@@ -23,7 +23,7 @@
         <div class="">
             <label for="mata_pelajaran">Pilih Tanggal</label>
             <div class="input-group date" data-provide="datepicker" id="datepicker">
-                <input type="text" class="form-control" name="tanggal">
+                <input type="text" class="form-control" name="tanggal" placeholder="Format : YYYYMMDD">
             </div>
         </div>
         <!-- <button type="submit" class="btn btn-primary">Submit</button> -->

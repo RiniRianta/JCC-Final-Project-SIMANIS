@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\kelas;
 use App\mata_pelajaran;
 use App\siswa;
+use App\absensi;
 
 
 class absensiController extends Controller
@@ -57,7 +58,20 @@ class absensiController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $siswa = siswa::all();
+        // dd($_POST['kehadiran' . 1]);
+        $i = 1;
+
+        foreach ($siswa as $item) {
+            $absensi = new absensi;
+            $absensi->siswa_id = $item->id;
+            $absensi->kehadiran = $_POST['kehadiran' . $i++];
+            $absensi->tanggal = $request->tanggal;
+            $absensi->mapel_id = $request->mata_pelajaran;
+            $absensi->keterangan = " ";
+            $absensi->save();
+        }
+        return redirect('/');
     }
 
     /**

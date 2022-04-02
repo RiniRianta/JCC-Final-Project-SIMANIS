@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class relasikelasController extends Controller
+class RelasiguruController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class relasikelasController extends Controller
      */
     public function index()
     {
-        return view('operator.relasi.kelasjurusan');
+        //
     }
 
     /**
@@ -23,7 +23,7 @@ class relasikelasController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -34,7 +34,7 @@ class relasikelasController extends Controller
      */
     public function store(Request $request)
     {
-           
+        //
     }
 
     /**

@@ -1,6 +1,6 @@
 @extends('template.main')
 @section('content')
-<h1> Tambah Kelas Dan Jurusan </h1>
+<h1> Tambah Guru</h1>
 <div class="row bg-light rounded mx-0">
     <form action="/operator" method="POST"> 
         @csrf
@@ -9,8 +9,8 @@
             <input type="text" class="form-control" name="nama">
         </div>
         <div class="form-group">
-            <label>Nama Jurusan</label>
-            <input type="text" class="form-control" name="jurusans">
+            <label>Nama Guru</label>
+            <input type="text" class="form-control" name="nama_guru">
           </div>
         @error('nama')
         <div class="alert alert-danger">{{ $message }}</div>

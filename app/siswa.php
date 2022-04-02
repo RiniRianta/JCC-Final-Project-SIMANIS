@@ -18,4 +18,9 @@ class siswa extends Model
     {
         return $this->hasMany('App\nilai_siswa');
     }
+
+    public function absensi()
+    {
+        return $this->hasMany('App\absensi');
+    }
 }

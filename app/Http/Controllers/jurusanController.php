@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\jurusan;
 
-class relasikelasController extends Controller
+class jurusanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,11 @@ class relasikelasController extends Controller
      */
     public function index()
     {
-        return view('operator.relasi.kelasjurusan');
+        $jurusan = jurusan::all();
+        return view('master.jurusan.mjurusan', [
+            'jurusan' => $jurusan,
+            'key' => 1
+        ]);
     }
 
     /**
@@ -23,7 +28,7 @@ class relasikelasController extends Controller
      */
     public function create()
     {
-        
+        return view('master.jurusan.create');
     }
 
     /**
@@ -34,7 +39,19 @@ class relasikelasController extends Controller
      */
     public function store(Request $request)
     {
-           
+        $request->validate(
+            [
+                'nama' => 'required'
+            ],
+            [
+                'nama.required' => 'nama Tidak Boleh kosong'
+            ]
+        );
+
+        $jurusan = new jurusan;
+        $jurusan->nama = $request->nama;
+        $jurusan->save();
+        return redirect('/admin/mjurusan');
     }
 
     /**
@@ -56,7 +73,10 @@ class relasikelasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $jurusan = jurusan::where('id', $id)->first();
+        return view('master.jurusan.edit', [
+            'jurusan' => $jurusan,
+        ]);
     }
 
     /**
@@ -68,8 +88,20 @@ class relasikelasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate(
+            [
+                'nama' => 'required'
+            ],
+            [
+                'nama.required' => 'nama Tidak Boleh kosong'
+            ]
+        );
+        jurusan::where('id', $id)->update([
+            'nama' => $request->nama
+        ]);
+        return redirect('/admin/mjurusan');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -79,6 +111,7 @@ class relasikelasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        jurusan::where('id', $id)->delete();
+        return redirect('/admin/mjurusan');
     }
 }

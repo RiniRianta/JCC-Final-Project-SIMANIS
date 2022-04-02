@@ -116,10 +116,10 @@
                     url: '/guru/absensi/findMapel/' + id,
                     success: function(data) {
 
-                        op += '<option name="kelas" id="kelas" selected>Pilih Mata Pelajaran</option>';
+                        op += '<option name="mapel" id="mapel" selected>Pilih Mata Pelajaran</option>';
                         for (var i = 0; i < data.length; i++) {
 
-                            op += '<option name="kelas" id="kelas" value="' + data[i].id + '">' + data[i].mata_pelajaran + '</option>';
+                            op += '<option name="mapel" id="mapel" value="' + data[i].id + '">' + data[i].mata_pelajaran + '</option>';
                         }
                         div.find('#mata_pelajaran').html(" ");
                         div.find('#mata_pelajaran').append(op);
@@ -147,11 +147,11 @@
                         op += '<thead><tr><th scope="col">Siswa(' + data.length + ')</th><th scope="col">Hadir</th><th scope="col">Sakit</th><th scope="col">Ijin</th><th scope="col">Alfa</th></tr></thead><tbody>';
                         var a = 0;
                         for (var i = 0; i < data.length; i++) {
-
-                            op += '<tr><td>' + data[i].nama + '</th><td><input class="form-check-input" type="radio" name="kehadiran' + i + '" id="kehadiran' + i + '" value="hadir" checked> </td><td><input class="form-check-input" type="radio" name="kehadiran' + i + '" id="kehadiran' + i + '" value="sakit"></td><td><input class="form-check-input" type="radio" name="kehadiran' + i + '" id="kehadiran' + i + '" value="ijin"></td><td><input class="form-check-input" type="radio" name="kehadiran' + i + '" id="kehadiran' + i + '" value="alfa"></td></tr>';
+                            a += 1;
+                            op += '<tr><td>' + data[i].nama + '</th><td><input class="form-check-input" type="radio" name="kehadiran' + a + '" id="kehadiran' + a + '" value="hadir" checked> </td><td><input class="form-check-input" type="radio" name="kehadiran' + a + '" id="kehadiran' + a + '" value="sakit"></td><td><input class="form-check-input" type="radio" name="kehadiran' + a + '" id="kehadiran' + a + '" value="ijin"></td><td><input class="form-check-input" type="radio" name="kehadiran' + a + '" id="kehadiran' + a + '" value="alfa"></td></tr>';
                         }
                         op += '</tbody>';
-                        // div.find('#table').html(" ");
+                        div.find('#table').html(" ");
                         div.find('#table').append(op);
 
                     },
@@ -163,9 +163,6 @@
 
             });
         });
-    </script>
-    <script type="text/javascript">
-        $('#datepicker input').datepicker({});
     </script>
 
 </body>
