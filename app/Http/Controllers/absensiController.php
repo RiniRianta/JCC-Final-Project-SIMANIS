@@ -27,12 +27,26 @@ class absensiController extends Controller
      */
     public function create()
     {
+
         $kelas = kelas::all();
         $mata_pelajaran = mata_pelajaran::all();
+        $siswa = siswa::all();
         return view('guru.absensi.tambah', [
             'kelas' => $kelas,
             'mata_pelajaran' => $mata_pelajaran
         ]);
+    }
+
+    public function findMapel($request)
+    {
+        $data = mata_pelajaran::select('mata_pelajaran', 'id')->where('kelas_id', $request)->take(100)->get();
+        return response()->json($data);
+    }
+
+    public function findSiswa($request)
+    {
+        $data = siswa::select('nama', 'id')->where('kelas_id', $request)->get();
+        return response()->json($data);
     }
 
     /**
@@ -43,7 +57,7 @@ class absensiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**

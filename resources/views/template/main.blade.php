@@ -27,7 +27,7 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <!-- Template Stylesheet -->
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
 
@@ -87,7 +87,7 @@
     </div>
 
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{asset('assets/lib/chart/chart.min.js')}}"></script>
     <script src="{{asset('assets/lib/easing/easing.min.js')}}"></script>
@@ -96,11 +96,74 @@
     <script src="{{asset('assets/lib/tempusdominus/js/moment.min.js')}}"></script>
     <script src="{{asset('assets/lib/tempusdominus/js/moment-timezone.min.js')}}"></script>
     <script src="{{asset('assets/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
     <!-- Template Javascript -->
     <script src="{{asset('assets/js/main.js')}}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(document).on('change', '.kelas', function() {
+
+                var id = $(this).val();
+                var div = $(this).parent().parent();
+                var op = " ";
+                $.ajax({
+                    type: 'get',
+                    url: '/guru/absensi/findMapel/' + id,
+                    success: function(data) {
+
+                        op += '<option name="kelas" id="kelas" selected>Pilih Mata Pelajaran</option>';
+                        for (var i = 0; i < data.length; i++) {
+
+                            op += '<option name="kelas" id="kelas" value="' + data[i].id + '">' + data[i].mata_pelajaran + '</option>';
+                        }
+                        div.find('#mata_pelajaran').html(" ");
+                        div.find('#mata_pelajaran').append(op);
+                    },
+
+                    error: function() {
+
+                    }
+                });
+
+            });
+        });
+
+        $(document).ready(function() {
+            $(document).on('change', '.mata_pelajaran', function() {
+                var id = $(".kelas").val();
+                var div = $(this).parent().parent();
+                var op = " ";
+                $.ajax({
+                    type: 'get',
+                    url: '/guru/absensi/findSiswa/' + id,
+                    success: function(data) {
+                        console.log("berhasil");
+                        console.log(data.length);
+                        op += '<thead><tr><th scope="col">Siswa(' + data.length + ')</th><th scope="col">Hadir</th><th scope="col">Sakit</th><th scope="col">Ijin</th><th scope="col">Alfa</th></tr></thead><tbody>';
+                        var a = 0;
+                        for (var i = 0; i < data.length; i++) {
+
+                            op += '<tr><td>' + data[i].nama + '</th><td><input class="form-check-input" type="radio" name="kehadiran' + i + '" id="kehadiran' + i + '" value="hadir" checked> </td><td><input class="form-check-input" type="radio" name="kehadiran' + i + '" id="kehadiran' + i + '" value="sakit"></td><td><input class="form-check-input" type="radio" name="kehadiran' + i + '" id="kehadiran' + i + '" value="ijin"></td><td><input class="form-check-input" type="radio" name="kehadiran' + i + '" id="kehadiran' + i + '" value="alfa"></td></tr>';
+                        }
+                        op += '</tbody>';
+                        // div.find('#table').html(" ");
+                        div.find('#table').append(op);
+
+                    },
+
+                    error: function() {
+
+                    }
+                });
+
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $('#datepicker input').datepicker({});
+    </script>
+
 </body>
 
 </html>
