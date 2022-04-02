@@ -87,7 +87,7 @@
     </div>
 
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{asset('assets/lib/chart/chart.min.js')}}"></script>
     <script src="{{asset('assets/lib/easing/easing.min.js')}}"></script>
@@ -96,9 +96,71 @@
     <script src="{{asset('assets/lib/tempusdominus/js/moment.min.js')}}"></script>
     <script src="{{asset('assets/lib/tempusdominus/js/moment-timezone.min.js')}}"></script>
     <script src="{{asset('assets/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
     <!-- Template Javascript -->
     <script src="{{asset('assets/js/main.js')}}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(document).on('change', '.kelas', function() {
+
+                var id = $(this).val();
+                var div = $(this).parent().parent();
+                var op = " ";
+                $.ajax({
+                    type: 'get',
+                    url: '/guru/absensi/findMapel/' + id,
+                    success: function(data) {
+
+                        op += '<option name="mapel" id="mapel" selected>Pilih Mata Pelajaran</option>';
+                        for (var i = 0; i < data.length; i++) {
+
+                            op += '<option name="mapel" id="mapel" value="' + data[i].id + '">' + data[i].mata_pelajaran + '</option>';
+                        }
+                        div.find('#mata_pelajaran').html(" ");
+                        div.find('#mata_pelajaran').append(op);
+                    },
+
+                    error: function() {
+
+                    }
+                });
+
+            });
+        });
+
+        $(document).ready(function() {
+            $(document).on('change', '.mata_pelajaran', function() {
+                var id = $(".kelas").val();
+                var div = $(this).parent().parent();
+                var op = " ";
+                $.ajax({
+                    type: 'get',
+                    url: '/guru/absensi/findSiswa/' + id,
+                    success: function(data) {
+                        console.log("berhasil");
+                        console.log(data.length);
+                        op += '<thead><tr><th scope="col">Siswa(' + data.length + ')</th><th scope="col">Hadir</th><th scope="col">Sakit</th><th scope="col">Ijin</th><th scope="col">Alfa</th></tr></thead><tbody>';
+                        var a = 0;
+                        for (var i = 0; i < data.length; i++) {
+                            a += 1;
+                            op += '<tr><td>' + data[i].nama + '</th><td><input class="form-check-input" type="radio" name="kehadiran' + a + '" id="kehadiran' + a + '" value="hadir" checked> </td><td><input class="form-check-input" type="radio" name="kehadiran' + a + '" id="kehadiran' + a + '" value="sakit"></td><td><input class="form-check-input" type="radio" name="kehadiran' + a + '" id="kehadiran' + a + '" value="ijin"></td><td><input class="form-check-input" type="radio" name="kehadiran' + a + '" id="kehadiran' + a + '" value="alfa"></td></tr>';
+                        }
+                        op += '</tbody>';
+                        div.find('#table').html(" ");
+                        div.find('#table').append(op);
+
+                    },
+
+                    error: function() {
+
+                    }
+                });
+
+            });
+        });
+    </script>
+
 </body>
 
 </html>

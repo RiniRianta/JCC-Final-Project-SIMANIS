@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\kelas;
 use App\mata_pelajaran;
 use App\siswa;
+use App\absensi;
 
 
 class absensiController extends Controller
@@ -27,12 +28,26 @@ class absensiController extends Controller
      */
     public function create()
     {
+
         $kelas = kelas::all();
         $mata_pelajaran = mata_pelajaran::all();
+        $siswa = siswa::all();
         return view('guru.absensi.tambah', [
             'kelas' => $kelas,
             'mata_pelajaran' => $mata_pelajaran
         ]);
+    }
+
+    public function findMapel($request)
+    {
+        $data = mata_pelajaran::select('mata_pelajaran', 'id')->where('kelas_id', $request)->take(100)->get();
+        return response()->json($data);
+    }
+
+    public function findSiswa($request)
+    {
+        $data = siswa::select('nama', 'id')->where('kelas_id', $request)->get();
+        return response()->json($data);
     }
 
     /**
@@ -43,7 +58,20 @@ class absensiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $siswa = siswa::all();
+        // dd($_POST['kehadiran' . 1]);
+        $i = 1;
+
+        foreach ($siswa as $item) {
+            $absensi = new absensi;
+            $absensi->siswa_id = $item->id;
+            $absensi->kehadiran = $_POST['kehadiran' . $i++];
+            $absensi->tanggal = $request->tanggal;
+            $absensi->mapel_id = $request->mata_pelajaran;
+            $absensi->keterangan = " ";
+            $absensi->save();
+        }
+        return redirect('/');
     }
 
     /**

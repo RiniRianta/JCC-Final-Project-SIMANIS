@@ -6,7 +6,7 @@
                 <i class="fa fa-chart-line fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2">Jumlah Siswa</p>
-                    <h2 class="mb-0">1234</h2>
+                    <h2 class="mb-0 text-center">{{$tsiswa}}</h2>
                 </div>
             </div>
         </div>
@@ -15,7 +15,7 @@
                 <i class="fa fa-chart-bar fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2">Jumlah Guru</p>
-                    <h2 class="mb-0">1234</h2>
+                    <h2 class="mb-0 text-center">{{$tguru}}</h2>
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
                 <i class="fa fa-chart-area fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2">Jumlah Kelas</p>
-                    <h2 class="mb-0">1234</h2>
+                    <h2 class="mb-0 text-center">{{$tkelas}}</h2>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                 <i class="fa fa-chart-pie fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2">Jumlah Jurusan</p>
-                    <h2 class="mb-0">1234</h2>
+                    <h2 class="mb-0 text-center">{{$tjurusan}}</h2>
                 </div>
             </div>
         </div>

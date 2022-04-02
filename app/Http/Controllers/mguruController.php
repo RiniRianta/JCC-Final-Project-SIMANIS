@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\guru;
 
-class relasikelasController extends Controller
+class mguruController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,12 @@ class relasikelasController extends Controller
      */
     public function index()
     {
-        return view('operator.relasi.kelasjurusan');
+        $guru = guru::all();
+
+        return view('admin.master.mguru', [
+            'guru' => $guru,
+            'num' => 1
+        ]);
     }
 
     /**
@@ -23,7 +29,7 @@ class relasikelasController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -34,7 +40,7 @@ class relasikelasController extends Controller
      */
     public function store(Request $request)
     {
-           
+        //
     }
 
     /**
