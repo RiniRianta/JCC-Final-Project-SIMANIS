@@ -18,7 +18,7 @@ class siswaController extends Controller
     {
         $siswa = siswa::all();
 
-        return view('datasiswa.siswa', [
+        return view('master.datasiswa.siswa', [
             'siswa' => $siswa,
             'key' => 1
         ]);

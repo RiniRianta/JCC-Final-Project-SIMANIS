@@ -3,13 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\kelas;
-use App\mata_pelajaran;
-use App\siswa;
-use App\absensi;
+use App\jurusan;
 
-
-class absensiController extends Controller
+class jurusanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +14,11 @@ class absensiController extends Controller
      */
     public function index()
     {
-        //
+        $jurusan = jurusan::all();
+        return view('master.jurusan.mjurusan', [
+            'jurusan' => $jurusan,
+            'key' => 1
+        ]);
     }
 
     /**
@@ -28,26 +28,7 @@ class absensiController extends Controller
      */
     public function create()
     {
-
-        $kelas = kelas::all();
-        $mata_pelajaran = mata_pelajaran::all();
-        $siswa = siswa::all();
-        return view('guru.absensi.tambah', [
-            'kelas' => $kelas,
-            'mata_pelajaran' => $mata_pelajaran
-        ]);
-    }
-
-    public function findMapel($request)
-    {
-        $data = mata_pelajaran::select('mata_pelajaran', 'id')->where('kelas_id', $request)->take(100)->get();
-        return response()->json($data);
-    }
-
-    public function findSiswa($request)
-    {
-        $data = siswa::select('nama', 'id')->where('kelas_id', $request)->get();
-        return response()->json($data);
+        return view('master.jurusan.create');
     }
 
     /**
@@ -58,20 +39,19 @@ class absensiController extends Controller
      */
     public function store(Request $request)
     {
-        $siswa = siswa::all();
-        // dd($_POST['kehadiran' . 1]);
-        $i = 1;
+        $request->validate(
+            [
+                'nama' => 'required'
+            ],
+            [
+                'nama.required' => 'nama Tidak Boleh kosong'
+            ]
+        );
 
-        foreach ($siswa as $item) {
-            $absensi = new absensi;
-            $absensi->siswa_id = $item->id;
-            $absensi->kehadiran = $_POST['kehadiran' . $i++];
-            $absensi->tanggal = $request->tanggal;
-            $absensi->mapel_id = $request->mata_pelajaran;
-            $absensi->keterangan = " ";
-            $absensi->save();
-        }
-        return redirect('/');
+        $jurusan = new jurusan;
+        $jurusan->nama = $request->nama;
+        $jurusan->save();
+        return redirect('/admin/mjurusan');
     }
 
     /**
@@ -93,7 +73,10 @@ class absensiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $jurusan = jurusan::where('id', $id)->first();
+        return view('master.jurusan.edit', [
+            'jurusan' => $jurusan,
+        ]);
     }
 
     /**
@@ -105,8 +88,20 @@ class absensiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate(
+            [
+                'nama' => 'required'
+            ],
+            [
+                'nama.required' => 'nama Tidak Boleh kosong'
+            ]
+        );
+        jurusan::where('id', $id)->update([
+            'nama' => $request->nama
+        ]);
+        return redirect('/admin/mjurusan');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -116,6 +111,7 @@ class absensiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        jurusan::where('id', $id)->delete();
+        return redirect('/admin/mjurusan');
     }
 }
