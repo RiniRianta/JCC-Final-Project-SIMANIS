@@ -9,7 +9,8 @@ class adminController extends Controller
     public function home(Request $request) {
         $tsiswa = \DB::table('siswas')->get()->count();
         $tguru = \DB::table('gurus')->get()->count();
-        return view('admin.homepage', compact('tsiswa','tguru'));
+        $tkelas = \DB::table('kelas')->get()->count();
+        return view('admin.homepage', compact('tsiswa','tguru','tkelas'));
     }
 
     public function masterjurusan() {
