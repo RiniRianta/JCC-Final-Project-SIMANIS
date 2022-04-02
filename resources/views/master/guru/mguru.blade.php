@@ -38,8 +38,12 @@
                                 <td class="pt-10">{{$dguru->tanggal_lahir}}</td>
                                 <td class="pt-10">{{$dguru->gol}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-sm btn-sm-square btn-outline-warning m-2"><i class="fa fa-edit"></i></button>
-                                    <button type="button" class="btn btn-sm btn-sm-square btn-outline-danger m-2"><i class="fa fa-trash"></i></button>
+                                    <form action="/admin/mguru/{{$dguru->id}}) }}" method="post">
+                                    @csrf
+                                        @method('delete')
+                                        <button type="button" class="btn btn-sm btn-sm-square btn-outline-warning m-2"><i class="fa fa-edit"></i></button>
+                                        <button type="submit" class="btn btn-sm btn-sm-square btn-outline-danger m-2" onclick="return confirm('Apakah Anda Yakin Menghapus {{$dguru->nama_guru}}?');"><i class="fa fa-trash"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach

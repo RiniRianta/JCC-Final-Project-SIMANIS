@@ -95,6 +95,8 @@ class mguruController extends Controller
      */
     public function destroy($id)
     {
-        //
+        guru::where('id', $id)->delete();
+
+        return redirect('/admin/mguru')->with('success','Post deleted successfully');
     }
 }
