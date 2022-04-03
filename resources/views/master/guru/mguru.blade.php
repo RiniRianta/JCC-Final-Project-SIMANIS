@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table data table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>

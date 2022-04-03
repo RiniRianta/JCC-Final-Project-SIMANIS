@@ -5,7 +5,7 @@
         <div class="bg-light rounded h-100 p-4">
             <h4 class="mb-4">Data Kelas</h4>
             <div class="table-responsive">
-                <table class="table">
+                <table class="table data table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <th scope="col">No</th>

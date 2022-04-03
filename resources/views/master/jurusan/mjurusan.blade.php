@@ -4,8 +4,8 @@
     <div class="col-12">
         <div class="bg-light rounded h-100 p-4">
             <h4 class="mb-4">Data Jurusan</h4>
-            <div class="table-responsive">
-                <table class="table">
+            
+                <table class="table data table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <th scope="col">No</th>
@@ -31,7 +31,7 @@
                         @endforeach
                     </tbody>
                 </table>
-            </div>
+
             <div class="d-flex justify-content-end">
                 <a class="btn btn-primary mb-3" href="/mjurusan/create" role="button">Tambah Data Jurusan</a>
             </div>
