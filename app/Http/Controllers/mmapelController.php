@@ -41,7 +41,7 @@ class mmapelController extends Controller
     public function store(Request $request)
     {
         $tmapel = new mata_pelajaran;
-        $tmapel->mata_pelajaran = $request->mpelajaran;
+        $tmapel->mata_pelajaran = $request->mata_pelajaran;
         $tmapel->guru_id = $request->guru_id;
         $tmapel->kelas_id = $request->kelas_id;
         $tmapel->save();
@@ -81,7 +81,14 @@ class mmapelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        mata_pelajaran::where('id', $id)->update(
+            [
+                'mata_pelajaran' => $request->mata_pelajaran,
+                'guru_id' => $request->guru_id,
+                'kelas_id' => $request->kelas_id
+            ]
+        );
+        return redirect('/admin/mapel');
     }
 
     /**
@@ -92,6 +99,8 @@ class mmapelController extends Controller
      */
     public function destroy($id)
     {
-        //
+        mata_pelajaran::where('id', $id)->delete();
+
+        return redirect('/admin/mapel')->with('success','Post deleted successfully');
     }
 }
