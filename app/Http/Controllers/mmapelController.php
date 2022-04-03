@@ -40,7 +40,14 @@ class mmapelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tmapel = new mata_pelajaran;
+        $tmapel->mata_pelajaran = $request->mpelajaran;
+        $tmapel->guru_id = $request->guru_id;
+        $tmapel->kelas_id = $request->kelas_id;
+        $tmapel->save();
+        $tmapel = mata_pelajaran::all();
+        return redirect('/admin/mapel')->with('success', 'Show is successfully saved');
+        
     }
 
     /**

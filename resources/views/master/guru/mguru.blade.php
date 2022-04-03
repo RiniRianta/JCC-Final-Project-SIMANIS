@@ -76,7 +76,7 @@
                     </div>
                     <div class="form-group">
                      <label>Jenis Kelamin</label>
-                        <select class="form-control" name="jenis_kelamin" id="jenis_kelamin">
+                        <select class="form-select" name="jenis_kelamin" id="jenis_kelamin">
                             <option selected>Pilih Jenis Kelamin</option>
                             <option>Laki-Laki</option>
                             <option>Perempuan</option>
@@ -136,10 +136,10 @@
                     </div>
                     <div class="form-group">
                      <label for="jenis_kelamin">Jenis Kelamin</label>
-                        <select class="form-control" name="jenis_kelamin" id="jenis_kelamin">
+                        <select class="form-select" name="jenis_kelamin" id="jenis_kelamin">
                             <option>Pilih Jenis Kelamin</option>
-                            <option>Laki-Laki</option>
-                            <option>Perempuan</option>
+                            <option value="{{$dguru->jenis_kelamin == "Laki-laki" ? 'selected' : ''}}">Laki-Laki</option>
+                            <option value="{{$dguru->jenis_kelamin == "Perempuan" ? 'selected' : ''}}">Perempuan</option>
                         </select>
                     </div>
                     <div class="row">
