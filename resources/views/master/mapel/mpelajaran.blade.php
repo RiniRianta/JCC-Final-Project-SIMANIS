@@ -28,9 +28,10 @@
                                 <th scope="row">{{$num++}}</th>
                                 <td class="pt-10">{{$mapels->mata_pelajaran}}</td>
                                 <td>
-                                    <form action="/admin/mapel/{{$mapels->id}}" method="post">
-                                        <button type="button" class="btn btn-sm btn-sm-square btn-outline-warning m-2" data-toggle="modal" data-target="#tmapelModaledit"><i class="fa fa-edit"></i></button>
+                                    <form action="/mmapel/{{$mapels->id}}" method="post">
                                         @csrf
+                                        <button type="button" class="btn btn-sm btn-sm-square btn-outline-warning m-2" data-toggle="modal" data-target="#tmapelModaledit"><i class="fa fa-edit"></i></button>
+                                        
                                         @method('delete')
                                         <button type="submit" class="btn btn-sm btn-sm-square btn-outline-danger m-2" onclick="return confirm('Apakah Anda Yakin Menghapus {{$mapels->mata_pelajaran}}?');"><i class="fa fa-trash"></i></button>
                                     </form>
@@ -54,24 +55,28 @@
             </button>
             </div>
             <div class="modal-body">
-                <form action="/admin/mapel" method="post">
+                <form action="/mmapel" method="post">
                     @csrf
                     <div class="form-group">
                     <label>Nama Mata Pejaran</label>
                     <input type="text" class="form-control" name="mata_pelajaran" id="mata_pelajaran" placeholder="Masukan Nama Mapel" required>
                     </div>
                     <div class="form-group">
-                     <label>ID Guru</label>
+                     <label>Pilih Guru Pengampu</label>
                         <select class="form-select" name="guru_id" id="guru_id">
-                            <option selected>Pilih ID Guru</option>
-                            <option>{{$mapels->guru_id}}</option>
+                            <option selected>--Pilih Guru--</option>
+                            @foreach($guru as $item)
+                            <option value="{{$item->id}}">{{$item->nama_guru}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group">
                         <label>ID Kelas</label>
                            <select class="form-select" name="kelas_id" id="kelas_id">
-                               <option selected>Pilih ID Kelas</option>
-                               <option>{{$mapels->kelas_id}}</option>
+                               <option selected>Pilih Kelas</option>
+                               @foreach($kelas as $item)
+                               <option value="{{$item->id}}">{{$item->kelas}}</option>
+                               @endforeach  
                            </select>
                        </div>
                 </div>
@@ -84,7 +89,7 @@
         </div>
     </div>
     {{-- Akhir Modal Tambah Data Mapel --}}
-
+    @if($cek !== 0)
     {{-- Modal Edit Data Mapel --}}
     <div class="modal fade" id="tmapelModaledit" tabindex="-1" role="dialog" aria-labelledby="tguruModalLabeledit" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -96,7 +101,7 @@
             </button>
             </div>
             <div class="modal-body">
-                <form action="/admin/mapel/{{$mapels->id}}" method="post">
+                <form action="/mmapel/{{$mapels->id}}" method="post">
                     @csrf
                     @method('put')
                     <input type="hidden" id="mid" name="mid">
@@ -105,17 +110,21 @@
                     <input type="text" class="form-control" value="{{$mapels->mata_pelajaran}}" name="mata_pelajaran" id="mata_pelajaran">
                     </div>
                     <div class="form-group">
-                        <label>ID Guru</label>
+                        <label>Pilih Guru Pengampu</label>
                            <select class="form-select" name="guru_id" id="guru_id">
-                               <option>Pilih ID Guru</option>
-                               <option selected>{{$mapels->guru_id}}</option>
+                               <option>--Pilih Guru--</option>
+                                @foreach($guru as $item)
+                                <option value="{{$item->id}}">{{$item->nama_guru}}</option>
+                                @endforeach
                            </select>
                        </div>
                        <div class="form-group">
-                           <label>ID Kelas</label>
+                           <label>Pilih Kelas</label>
                               <select class="form-select" name="kelas_id" id="kelas_id">
-                                  <option>Pilih ID Kelas</option>
-                                  <option selected>{{$mapels->kelas_id}}</option>
+                                  <option selected>--Pilih Kelas--</option>
+                                 @foreach($kelas as $item)
+                                 <option value="{{$item->id}}">{{$item->kelas}}</option>
+                                 @endforeach
                               </select>
                           </div>
                 </div>
@@ -128,4 +137,5 @@
         </div>
     </div>
     {{-- Akhir Modal Edit Data Mapel --}}
+    @endif
 @endsection

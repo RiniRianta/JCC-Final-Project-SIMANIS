@@ -4,7 +4,7 @@
     <div class="">
         <h4>Tambah Data kelas</h4>
         <p>Silakan input form dibawah untuk menambahkan data kelas</p>
-        <form action="/admin/mkelas/" method="post">
+        <form action="/mkelas/" method="post">
             @csrf
             <div class="form-group">
                 <label for="name">Nama Kelas</label>

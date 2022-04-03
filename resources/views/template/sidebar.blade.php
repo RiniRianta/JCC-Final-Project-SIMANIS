@@ -15,17 +15,21 @@
         </div>
 
         <div class="navbar-nav w-100">
-            @if(auth()->user()->user_group->group_id === 1)
-            <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+            <a href="/" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+            @if(auth()->user()->user_group->group_id === 1)            
             <div class="nav-item dropdown">
-                <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Admin</a>
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Master</a>
                 <div class="dropdown-menu bg-transparent border-0">
-                    <a href="{{route('admin.index')}}" class="dropdown-item">Homepage</a>
-                    <a href="{{route('mguru.index')}}" class="dropdown-item">Data Guru</a>
-                    <a href="element.html" class="dropdown-item">Other Elements</a>
+                    <a href="/mjurusan" class="dropdown-item">Master Jurusan</a>
+                    <a href="/mkelas" class="dropdown-item">Master Kelas</a>
+                    <a href="/mmapel" class="dropdown-item">Master Mata Pelajaran</a>
+                    <a href="/mguru" class="dropdown-item">Master Guru</a>
+                    <a href="/datasiswa" class="dropdown-item">Master Siswa</a>
                 </div>
             </div>
-            <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
+            @endif
+            @if(auth()->user()->user_group->group_id === 2)
+
             @endif
         </div>
     </nav>

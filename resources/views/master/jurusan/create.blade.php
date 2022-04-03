@@ -4,7 +4,7 @@
     <div class="">
         <h4>Tambah Data jurusan</h4>
         <p>Silakan input form dibawah untuk menambahkan data jurusan</p>
-        <form action="/admin/mjurusan/" method="post">
+        <form action="/mjurusan/" method="post">
             @csrf
             <div class="form-group">
                 <label for="name">Nama Jurusan</label>

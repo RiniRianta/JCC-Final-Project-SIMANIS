@@ -4,7 +4,7 @@
     <div class="">
         <h4>Tambah Data Siswa</h4>
         <p>Silakan input form dibawah untuk menambahkan data siswa</p>
-        <form action="/guru/datasiswa/{{$siswa->id}}" method="post">
+        <form action="/datasiswa/{{$siswa->id}}" method="post">
             @csrf
             @method('put')
             <div class="form-group">

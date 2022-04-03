@@ -4,7 +4,7 @@
     <div class="">
         <h4>Tambah Data Siswa</h4>
         <p>Silakan input form dibawah untuk menambahkan data siswa</p>
-        <form action="/guru/datasiswa/" method="post">
+        <form action="/datasiswa/" method="post">
             @csrf
             <div class="form-group">
                 <label for="name">Nama</label>

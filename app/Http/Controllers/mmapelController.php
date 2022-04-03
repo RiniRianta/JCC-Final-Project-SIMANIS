@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\mata_pelajaran;
+use App\guru;
+use App\kelas;
 
 class mmapelController extends Controller
 {
@@ -15,10 +17,15 @@ class mmapelController extends Controller
     public function index()
     {
         $mapel = mata_pelajaran::all();
-
+        $guru = guru::all();
+        $cek = $mapel->count();
         return view('master.mapel.mpelajaran', [
             'mapel' => $mapel,
-            'num' => 1
+            'num' => 1,
+            'guru' => $guru,
+            'kelas' => kelas::all(),
+            'cek' => $cek
+
         ]);
     }
 
@@ -46,7 +53,7 @@ class mmapelController extends Controller
         $tmapel->kelas_id = $request->kelas_id;
         $tmapel->save();
         $tmapel = mata_pelajaran::all();
-        return redirect('/admin/mapel')->with('success', 'Show is successfully saved');
+        return redirect('/mmapel')->with('success', 'Show is successfully saved');
         
     }
 
@@ -88,7 +95,7 @@ class mmapelController extends Controller
                 'kelas_id' => $request->kelas_id
             ]
         );
-        return redirect('/admin/mapel');
+        return redirect('/mmapel');
     }
 
     /**
@@ -101,6 +108,6 @@ class mmapelController extends Controller
     {
         mata_pelajaran::where('id', $id)->delete();
 
-        return redirect('/admin/mapel')->with('success','Post deleted successfully');
+        return redirect('/mmapel')->with('success','Post deleted successfully');
     }
 }

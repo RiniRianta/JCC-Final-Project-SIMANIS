@@ -8,27 +8,17 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('index');
+        if(!auth()->check() || auth()->user()->user_group->group_id === 2){
+            return view('guru.index');
+        }
+
+        if(!auth()->check() || auth()->user()->user_group->group_id === 1){
+            $tsiswa = \DB::table('siswas')->get()->count();
+            $tguru = \DB::table('gurus')->get()->count();
+            $tkelas = \DB::table('kelas')->get()->count();
+            $tjurusan = \DB::table('jurusans')->get()->count();
+            return view('admin.homepage', compact('tsiswa','tguru','tkelas','tjurusan'));
+        }
+        
     }
-
-    public function dashboard()
-    {
-        return view('operator.homepage');
-    }
-    public function guru()
-    {
-        return view('guru.index');
-
-    }
-
-    public function admin(Request $request) {
-        $tsiswa = \DB::table('siswas')->get()->count();
-        $tguru = \DB::table('gurus')->get()->count();
-        $tkelas = \DB::table('kelas')->get()->count();
-        $tjurusan = \DB::table('jurusans')->get()->count();
-        return view('admin.homepage', compact('tsiswa','tguru','tkelas','tjurusan'));
-    }
-
-
-   
 }

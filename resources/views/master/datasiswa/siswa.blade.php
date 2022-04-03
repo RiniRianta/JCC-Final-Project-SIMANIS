@@ -28,10 +28,10 @@
                         <th>{{$item->tanggal_lahir}}</th>
                         <th>{{$item->kelas->kelas}}</th>
                         <th>
-                            <form method="post" action="/guru/datasiswa/{{$item->id}}">
+                            <form method="post" action="/datasiswa/{{$item->id}}">
                                 @csrf
                                 @method('delete')
-                                <a class="btn btn-sm btn-sm-square btn-outline-warning m-2" href="/guru/datasiswa/{{$item->id}}/edit" role="button"><i class="fa fa-edit"></i></a>
+                                <a class="btn btn-sm btn-sm-square btn-outline-warning m-2" href="/datasiswa/{{$item->id}}/edit" role="button"><i class="fa fa-edit"></i></a>
                                 <button type="submit" class="btn btn-sm btn-sm-square btn-outline-danger m-2"><i class="fa fa-trash"></i></button>
 
                             </form>
@@ -42,7 +42,7 @@
                 </tbody>
             </table>
             <div class="d-flex justify-content-end">
-                <a class="btn btn-primary mb-3" href="/guru/datasiswa/create" role="button">Tambah Data Siswa</a>
+                <a class="btn btn-primary mb-3" href="/datasiswa/create" role="button">Tambah Data Siswa</a>
             </div>
         </article>
     </div>

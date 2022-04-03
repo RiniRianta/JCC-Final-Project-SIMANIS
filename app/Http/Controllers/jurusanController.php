@@ -51,7 +51,7 @@ class jurusanController extends Controller
         $jurusan = new jurusan;
         $jurusan->nama = $request->nama;
         $jurusan->save();
-        return redirect('/admin/mjurusan');
+        return redirect('/mjurusan');
     }
 
     /**
@@ -99,7 +99,7 @@ class jurusanController extends Controller
         jurusan::where('id', $id)->update([
             'nama' => $request->nama
         ]);
-        return redirect('/admin/mjurusan');
+        return redirect('/mjurusan');
     }
 
 
@@ -112,6 +112,6 @@ class jurusanController extends Controller
     public function destroy($id)
     {
         jurusan::where('id', $id)->delete();
-        return redirect('/admin/mjurusan');
+        return redirect('/mjurusan');
     }
 }
