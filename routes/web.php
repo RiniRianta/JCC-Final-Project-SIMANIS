@@ -13,8 +13,8 @@
 
 
 Route::get("/operator", "HomeController@dashboard");
-Route::get("/", "HomeController@index");
-Route::get("/admin", "adminController@home");
+Route::get("/", "HomeController@index")->name('index');
+Route::get("/admin", "adminController@home")->name('admin.index');
 Route::get("/admin/mkelas", "adminController@masterkelas");
 Route::get("/guru", "HomeController@guru");
 Route::get("/operator", "HomepageController@dasboard");
