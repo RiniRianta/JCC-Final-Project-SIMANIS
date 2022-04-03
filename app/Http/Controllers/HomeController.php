@@ -21,5 +21,14 @@ class HomeController extends Controller
 
     }
 
+    public function admin(Request $request) {
+        $tsiswa = \DB::table('siswas')->get()->count();
+        $tguru = \DB::table('gurus')->get()->count();
+        $tkelas = \DB::table('kelas')->get()->count();
+        $tjurusan = \DB::table('jurusans')->get()->count();
+        return view('admin.homepage', compact('tsiswa','tguru','tkelas','tjurusan'));
+    }
+
+
    
 }
