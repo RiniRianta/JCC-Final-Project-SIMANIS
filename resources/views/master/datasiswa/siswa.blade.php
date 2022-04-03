@@ -4,7 +4,7 @@
     <div class="">
         <article class="ms-3 mt-3">
             <h3>Data Siswa</h3>
-            <table id="myTable" class="table table-striped">
+            <table class="table data table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
                         <th>No</th>
