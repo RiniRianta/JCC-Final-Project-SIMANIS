@@ -1,4 +1,4 @@
-##SIMANIS
+## SIMANIS
 
 Aplikasi ini dibuat guna memenuhi tugas Final Project jabar Coding Camp Batch 2
 Kami membuat aplikasi bernama simanis(sistem manajemen informasi sekolah), dimana aplikasi ini dibuat guna membantu sekolah dalam menyelesaikan pekerjaan administrasi
@@ -18,4 +18,4 @@ Kami juga memasang beberapa library, diantaranya : Sweet Alert, dan Datatables
 ## Auth
 Terdapat dua hak akses login pada aplikasi ini, yaitu: Hak Akses Guru, Hak Akses Admin
 
-<img src"erd.png" width="400">
+<img src="erd.png" width="400">
