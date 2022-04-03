@@ -1,4 +1,4 @@
-##SIMANIS
+# SIMANIS
 
 Aplikasi ini dibuat guna memenuhi tugas Final Project jabar Coding Camp Batch 2
 Kami membuat aplikasi bernama simanis(sistem manajemen informasi sekolah), dimana aplikasi ini dibuat guna membantu sekolah dalam menyelesaikan pekerjaan administrasi
@@ -26,3 +26,15 @@ Terdapat dua hak akses login pada aplikasi ini, yaitu: Hak Akses Guru, Hak Akses
 ## Hasil Deploy ke Hosting
 
 http://simanis.alhawari.or.id
+
+## Keterangan login Admin
+
+### email : admin@admin.com
+
+### password : 123456
+
+## Keterangan login Guru
+
+### email : mehanhanhanafi@gmail.com
+
+### password : 123456
