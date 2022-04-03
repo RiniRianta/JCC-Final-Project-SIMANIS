@@ -18,4 +18,4 @@ Kami juga memasang beberapa library, diantaranya : Sweet Alert, dan Datatables
 ## Auth
 Terdapat dua hak akses login pada aplikasi ini, yaitu: Hak Akses Guru, Hak Akses Admin
 
-<img src"erd.png" width="400">
+<img src="erd.png" width="400">
