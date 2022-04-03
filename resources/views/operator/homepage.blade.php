@@ -1,12 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1> Ini Halaman Utama</h1>
-</body>
-</html>
+@extends('template.main')
+@section('content')
+<div class="row bg-light rounded mx-0">
+    <div class="">
+        <article class="ms-3 mt-3">
+            <h3>SIMANIS</h3>
+            <p>Halo, selamat datang di halaman guru. Terdapat beberapa fitur dihalaman ini, diantaranya</p>
+            <ul>
+                <li>Fitur Data Guru</li>
+                <li>Fitur Data Siswa</li>
+                <li>Fitur Agenda Mengajar</li>
+                <li>Fitur Data Absensi Siswa</li>
+                <li>Fitur Nilai Siswa</li>
+            </ul>
+        </article>
+    </div>
+</div>
+@endsection
