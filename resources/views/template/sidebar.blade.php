@@ -16,7 +16,7 @@
 
         <div class="navbar-nav w-100">
             <a href="/" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-            @if(auth()->user()->user_group->group_id === 1)            
+            @if(auth()->user()->user_group->group_id === 1)
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Master</a>
                 <div class="dropdown-menu bg-transparent border-0">
