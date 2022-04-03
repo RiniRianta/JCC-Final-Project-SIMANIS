@@ -1,3 +1,15 @@
+# Final Project
+
+## _Kelompok 23_
+
+#### Anggota Kelompok
+
+| No  | Nama                           |
+| --- | ------------------------------ |
+| 1   | Andhika Guntur Slamet          |
+| 2   | Hanhan Hanafi                  |
+| 3   | Rini Rianta Yulita Simanjuntak |
+
 # SIMANIS
 
 Aplikasi ini dibuat guna memenuhi tugas Final Project jabar Coding Camp Batch 2
@@ -25,16 +37,20 @@ Terdapat dua hak akses login pada aplikasi ini, yaitu: Hak Akses Guru, Hak Akses
 
 ## Hasil Deploy ke Hosting
 
+```sh
 http://simanis.alhawari.or.id
+```
 
-## Keterangan login Admin
+### Keterangan login Admin
 
-### email : admin@admin.com
+```sh
+email : admin@admin.com
+password : 123456
+```
 
-### password : 123456
+### Keterangan login Guru
 
-## Keterangan login Guru
-
-### email : mehanhanhanafi@gmail.com
-
-### password : 123456
+```sh
+email : mehanhanhanafi@gmail.com
+password : 123456
+```
