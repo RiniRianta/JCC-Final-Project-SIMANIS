@@ -84,7 +84,17 @@ class mguruController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        guru::where('id', $id)->update(
+            [
+                'nama_guru' => $request->nama_guru,
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'nip' => $request->nip,
+                'tempat_lahir' => $request->tempat_lahir,
+                'tanggal_lahir' => $request->tanggal_lahir,
+                'gol' => $request->gol
+            ]
+        );
+        return redirect('/admin/mguru');
     }
 
     /**
