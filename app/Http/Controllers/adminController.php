@@ -21,8 +21,4 @@ class adminController extends Controller
     public function masterkelas() {
         return view('master.kelas.mkelas');
     }
-
-    public function mastermapel() {
-        return view('master.mapel.mpelajaran');
-    }
 }
