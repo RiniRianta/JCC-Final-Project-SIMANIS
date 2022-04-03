@@ -58,7 +58,7 @@ class kelasController extends Controller
         $kelas->kelas = $request->nama;
         $kelas->jurusan_id = $request->jurusan;
         $kelas->save();
-        return redirect('/admin/mkelas');
+        return redirect('/mkelas');
     }
 
     /**
@@ -109,7 +109,7 @@ class kelasController extends Controller
             'kelas' => $request->nama,
             'jurusan_id' => $request->jurusan
         ]);
-        return redirect('/admin/mkelas');
+        return redirect('/mkelas');
     }
 
     /**
@@ -121,6 +121,6 @@ class kelasController extends Controller
     public function destroy($id)
     {
         kelas::where('id', $id)->delete();
-        return redirect('/admin/mkelas');
+        return redirect('/mkelas');
     }
 }

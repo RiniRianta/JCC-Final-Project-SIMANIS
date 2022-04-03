@@ -21,10 +21,10 @@
                             <td class="pt-10">{{$item->kelas}}</td>
                             <td class="pt-10">{{$item->jurusan->nama}}</td>
                             <td>
-                                <form method="post" action="/admin/mkelas/{{$item->id}}">
+                                <form method="post" action="/mkelas/{{$item->id}}">
                                     @csrf
                                     @method('delete')
-                                    <a class="btn btn-sm btn-sm-square btn-outline-warning m-2" href="/admin/mkelas/{{$item->id}}/edit" role="button"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-sm btn-sm-square btn-outline-warning m-2" href="/mkelas/{{$item->id}}/edit" role="button"><i class="fa fa-edit"></i></a>
                                     <button type="submit" class="btn btn-sm btn-sm-square btn-outline-danger m-2"><i class="fa fa-trash"></i></button>
 
                                 </form>
@@ -35,7 +35,7 @@
                 </table>
             </div>
             <div class="d-flex justify-content-end">
-                <a class="btn btn-primary mb-3" href="/admin/mkelas/create" role="button">Tambah Data Siswa</a>
+                <a class="btn btn-primary mb-3" href="/mkelas/create" role="button">Tambah Data Kelas</a>
             </div>
         </div>
     </div>

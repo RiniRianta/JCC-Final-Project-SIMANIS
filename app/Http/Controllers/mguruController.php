@@ -15,10 +15,11 @@ class mguruController extends Controller
     public function index()
     {
         $guru = guru::all();
-
+        $hitung = guru::get()->count();
         return view('master.guru.mguru', [
             'guru' => $guru,
-            'num' => 1
+            'num' => 1,
+            'hitung' => $hitung
         ]);
     }
 
@@ -50,7 +51,7 @@ class mguruController extends Controller
         $gurum->gol = $request->gol;
         $gurum->save();
         $gurum = guru::all();
-        return redirect('/admin/mguru')->with('success', 'Show is successfully saved');
+        return redirect('/mguru')->with('success', 'Show is successfully saved');
     }
 
     /**
@@ -94,7 +95,7 @@ class mguruController extends Controller
                 'gol' => $request->gol
             ]
         );
-        return redirect('/admin/mguru');
+        return redirect('/mguru');
     }
 
     /**
@@ -107,6 +108,6 @@ class mguruController extends Controller
     {
         guru::where('id', $id)->delete();
 
-        return redirect('/admin/mguru')->with('success','Post deleted successfully');
+        return redirect('/mguru')->with('success','Post deleted successfully');
     }
 }

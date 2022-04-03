@@ -38,7 +38,7 @@
                                 <td class="pt-10">{{$dguru->tanggal_lahir}}</td>
                                 <td class="pt-10">{{$dguru->gol}}</td>
                                 <td>
-                                    <form action="/admin/mguru/{{$dguru->id}}" method="post">
+                                    <form action="/mguru/{{$dguru->id}}" method="post">
                                         <button type="button" class="btn btn-sm btn-sm-square btn-outline-warning m-2" data-toggle="modal" data-target="#tguruModaledit"><i class="fa fa-edit"></i></button>
                                         @csrf
                                         @method('delete')
@@ -64,7 +64,7 @@
             </button>
             </div>
             <div class="modal-body">
-                <form action="/admin/mguru" method="post">
+                <form action="/mguru" method="post">
                     @csrf
                     <div class="form-group">
                     <label>Nama</label>
@@ -110,7 +110,8 @@
         </div>
     </div>
     {{-- Akhir Modal Tambah Data Guru --}}
-
+    @if($hitung !== 0)
+    
     {{-- Modal Edit Data Guru --}}
     <div class="modal fade" id="tguruModaledit" tabindex="-1" role="dialog" aria-labelledby="tguruModalLabeledit" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -122,7 +123,7 @@
             </button>
             </div>
             <div class="modal-body">
-                <form action="/admin/mguru/{{$dguru->id}}" method="post">
+                <form action="/mguru/{{$dguru->id}}" method="post">
                     @csrf
                     @method('put')
                     <input type="hidden" id="mid" name="mid">
@@ -169,5 +170,6 @@
         </div>
         </div>
     </div>
+    @endif
     {{-- Akhir Modal Edit Data Guru --}}
 @endsection

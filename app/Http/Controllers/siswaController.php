@@ -32,7 +32,7 @@ class siswaController extends Controller
     public function create()
     {
         $kelas = kelas::all();
-        return view('datasiswa.create', [
+        return view('master.datasiswa.create', [
             'kelas' => $kelas
         ]);
     }
@@ -62,7 +62,7 @@ class siswaController extends Controller
         $siswa->kelas_id = $request->kelas;
         $siswa->save();
         $siswa = siswa::all();
-        return view('datasiswa.siswa', [
+        return view('master.datasiswa.siswa', [
             'key' => 1,
             'siswa' => $siswa
         ]);
@@ -89,7 +89,7 @@ class siswaController extends Controller
     {
         $kelas = kelas::all();
         $siswa_id = siswa::where('id', $id)->first();;
-        return view('datasiswa.edit', [
+        return view('master.datasiswa.edit', [
             'siswa' => $siswa_id,
             'kelas' => $kelas
         ]);

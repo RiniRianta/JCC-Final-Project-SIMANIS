@@ -19,10 +19,10 @@
                             <th scope="row">{{$key++}}</th>
                             <td class="pt-10">{{$item->nama}}</td>
                             <td>
-                                <form method="post" action="/admin/mjurusan/{{$item->id}}">
+                                <form method="post" action="/mjurusan/{{$item->id}}">
                                     @csrf
                                     @method('delete')
-                                    <a class="btn btn-sm btn-sm-square btn-outline-warning m-2" href="/admin/mjurusan/{{$item->id}}/edit" role="button"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-sm btn-sm-square btn-outline-warning m-2" href="/mjurusan/{{$item->id}}/edit" role="button"><i class="fa fa-edit"></i></a>
                                     <button type="submit" class="btn btn-sm btn-sm-square btn-outline-danger m-2"><i class="fa fa-trash"></i></button>
 
                                 </form>
@@ -33,7 +33,7 @@
                 </table>
             </div>
             <div class="d-flex justify-content-end">
-                <a class="btn btn-primary mb-3" href="/admin/mjurusan/create" role="button">Tambah Data Siswa</a>
+                <a class="btn btn-primary mb-3" href="/mjurusan/create" role="button">Tambah Data Jurusan</a>
             </div>
         </div>
     </div>

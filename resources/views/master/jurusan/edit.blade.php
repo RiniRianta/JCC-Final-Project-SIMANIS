@@ -4,7 +4,7 @@
     <div class="">
         <h4>Tambah Data jurusan</h4>
         <p>Silakan input form dibawah untuk menambahkan data jurusan</p>
-        <form action="/admin/mjurusan/{{$jurusan->id}}" method="post">
+        <form action="/mjurusan/{{$jurusan->id}}" method="post">
             @csrf
             @method('put')
             <div class="form-group">
